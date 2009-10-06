@@ -6,7 +6,32 @@ CruiseControlBuilder seeks to make it easy to add your rails project to Cruise C
 Example
 =======
 
-Example goes here. Sure does, will type in an example soon.
+To use CruiseControlBuilder, first install it in your rails project using:
 
+script/plugin install git://github.com/trotter/cruise_control_builder.git
+
+Then add the following to your CruiseControl config.xml:
+
+  <project name="your_project_name">
+    <listeners>
+      <currentbuildstatuslistener file="logs/${project.name}/status.txt"/>
+    </listeners>
+
+    <bootstrappers>
+      <gitbootstrapper localWorkingCopy="projects/${project.name}" />
+    </bootstrappers>
+
+    <modificationset quietperiod="30">
+      <git LocalWorkingCopy="projects/${project.name}" />
+    </modificationset>
+
+    <schedule interval="300">
+      <rake target="build:ant" workingDir="projects/${project.name}" buildfile="Rakefile" />
+    </schedule>
+
+    <log>
+      <merge dir="projects/${project.name}/log/test-cc.log"/>
+    </log>
+  </project>
 
 Copyright (c) 2009 Trotter Cashion & Aaron Feng, released under the MIT license
