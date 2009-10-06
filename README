@@ -1,0 +1,12 @@
+CruiseControlBuilder
+===============
+
+CruiseControlBuilder seeks to make it easy to add your rails project to Cruise Control. It adds three rake tasks to your rails project. spec:ant will run your specs and send the output to log/test-cc.log. build:ant will remigrate your database and then run spec:ant. db:migrate:zero will drop your database to migration zero and is used by build:ant. 
+
+Example
+=======
+
+Example goes here. Sure does, will type in an example soon.
+
+
+Copyright (c) 2009 Trotter Cashion & Aaron Feng, released under the MIT license
